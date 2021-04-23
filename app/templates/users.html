@@ -1,0 +1,231 @@
+<div class="container">
+
+    <ol class="breadcrumb">
+      <li><a href="">bistró</a></li>
+      <li class="active">Users</li>
+    </ol>
+  
+    <section>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+
+          <selected-user 
+            usr="user" 
+            selected="selectedUsr" 
+            usershttpcode="usersHttpStatusCode" 
+            usershttptext="usersHttpStatusText" 
+            submitted="submitted" 
+            formvalid="userForm.$valid"></selected-user>
+
+          <div class="row">
+              <div class="col-sm-9"><h1>User Manager</h1></div>
+              <div class="col-sm-3" align="right">
+                  <button class="btn btn-sm btn-primary mr-1 m-t-1" ng-click="toggleForm()">
+                      Add user <i ng-class="(showForm)?'fa fa-minus':'fa fa-plus'"></i>
+                  </button>
+              </div>
+          </div>
+
+          <div class="row" ng-show="showForm">
+            <div class="col-md-12">
+                <form name="userForm" id="userForm" novalidate>
+                    <input type="hidden" name="_id" ng-model="user._id" />    
+
+                    <div class="form-row row">
+                        <div class="form-group col-xs-6">
+                            <label>First Name</label>
+                            <input type="text" name="firstName" ng-model="user.firstName" class="form-control" ng-pattern="/^[A-Za-z]+([\ A-Za-z]+)*/" required />
+
+                            <div ng-show="submitted" class="invalid-feedback">
+                                <div ng-show="userForm.firstName.$error.required">First name is required.</div>
+                                <div ng-show="userForm.firstName.$error.pattern">First name is invalid.</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label>Last Name</label>
+                            <input type="text" name="lastName" ng-model="user.lastName" class="form-control" ng-pattern="/^[A-Za-z]+([\ A-Za-z]+)*/" required />
+
+                            <div ng-show="submitted" class="invalid-feedback">
+                              <div ng-show="userForm.lastName.$error.required">Last name is required.</div>
+                              <div ng-show="userForm.lastName.$error.pattern">Last name is invalid.</div>
+                          </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row row">
+                        <div class="form-group col-xs-4">
+                            <label>Nick</label>
+                            <input type="text" name="nick" ng-model="user.nick" class="form-control" required />
+
+                            <div ng-show="submitted" class="invalid-feedback">
+                              <div ng-show="userForm.nick.$error.required">Nick required.</div>
+                            </div>
+                        </div>                        
+                        <div class="form-group col-xs-5">
+                            <label>Profile</label>
+                            <select name="profile" ng-model="user.profile" class="form-control" 
+                            required>
+                                <option value=""></option>
+                                <option value="Super">Super</option>
+                                <option Admin="Admin">Admin</option>
+                                <option value="Chef">Chef</option>
+                                <option value="Commander">Commander</option>
+                            </select>
+
+                            <div ng-show="submitted" class="invalid-feedback">
+                              <div ng-show="userForm.profile.$error.required">Profile required.</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-3">
+                            <label>Status</label>
+                            <select name="status" ng-model="user.status" class="form-control" required>
+                                <option value=""></option>
+                                <option value="Enabled">Activo</option>
+                                <option value="Disabled">Inactivo</option>
+                            </select>
+
+                            <div ng-show="submitted" class="invalid-feedback">
+                              <div ng-show="userForm.status.$error.required">Status required.</div>
+                            </div>
+                        </div>                        
+                    </div>
+
+                    <div class="form-row row">
+                        <div class="form-group col-sm-6">
+                            <label>Phone</label>
+                            <input type="text" name="phone" ng-model="user.phone" class="form-control" ng-pattern="/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/" required />
+
+                            <div ng-show="submitted" class="invalid-feedback">
+                              <div ng-show ="userForm.phone.$error.required">Phone is required.</div>
+                              <div ng-show ="userForm.phone.$error.pattern">Invalid Phone.</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label>Email</label>
+                            <input type="text" name="email" ng-model="user.email" autocomplete="off" class="form-control" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" required />
+
+                            <div ng-show="submitted" class="invalid-feedback">
+                                <div ng-show ="userForm.email.$error.required">Email is required.</div>
+                                <div ng-show ="userForm.email.$error.pattern">Invalid email address.</div>
+                            </div>
+                        </div>                        
+                    </div>
+                    <div class="form-row row">
+                        <div class="form-group col-xs-6">
+                            <label>Password</label>
+                            <input type="password" name="password" ng-model="user.password" autocomplete="off" class="form-control" required />
+
+                            <div ng-show="submitted" class="invalid-feedback">
+                                <div ng-show="userForm.password.$error.required">Password is required</div>
+                                <div ng-show="userForm.password.$error.password">Take care of the characters</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label>Confirm Password</label>
+                            <input type="password" name="confirmPassword" ng-model="user.confirmPassword" autocomplete="off" class="form-control" required />
+
+                            <div ng-show="submitted" class="invalid-feedback">
+                                <div ng-show="userForm.confirmPassword.$error.required">Confirm Password is required</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row row">
+                        <div class="col-md-12">
+                            <button class="btn btn-primary mr-1" ng-click="onSubmit()">Save User</button>
+                            <button class="btn btn-secondary m-l-1" type="reset" ng-click="resetForm()">Reset</button>
+                        </div>
+                    </div>
+                </form>             
+            </div>
+        </div>          
+
+          <div class="row m-t-1">
+            <form name="filterForm" id="filterForm" novalidate></form>
+              <div class="col-xs-6">
+                <div class="form-group">
+                  <input type="text" name="string" ng-model="string" class="form-control" placeholder="Search" />
+                </div>
+              </div>   
+              <div class="col-xs-6">
+                  <div class="form-group">
+                    <select name="filterBy" ng-model="filterBy" class="form-control">
+                        <option value="">Order by...</option>
+                        <option value="profile">Profile</option>
+                        <option value="lastName">Last Name</option>
+                        <option value="firstName">First Name</option>
+                    </select>
+                  </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+                <table class="table table-striped">
+                  <thead>
+                    <th>Name</th>
+                    <th>Last Name</th>
+                    <th>Nick</th>
+                    <th>Profile</th>
+                    <th>Phone</th>
+                    <th></th>
+                  </thead>
+                  <tbody>
+                    <tr ng-repeat="user in users | orderBy: filterBy | filter : string">
+                        <td>{{user.firstName}}</td>
+                        <td>{{user.lastName}}</td>
+                        <td>{{user.nick}}</td>
+                        <td>{{user.profile}}</td>
+                        <td>{{user.phone}}</td>
+                        <td class="text-center">
+                            <a ng-click="editUsr(user)">
+                                <button class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></button>
+                            </a>
+                            <a class="m-l-1" ng-click="deleteUsr(user._id)">
+                                <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
+                            </a>
+                        </td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+          </div>
+
+          <hr>
+          <div class="row">
+            <div class="section-actions col-md-7 social-share">
+              <p>Compartir en <br> redes sociales</p>
+              <ul class="list-inline">
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter "></i></a></li>
+                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+              </ul>
+            </div>
+          </div>
+          <hr>          
+
+          <div class="downloads">
+
+            <h4>Descargas</h4>
+  
+            <div class="row row-flex">
+              <div class="col-xs-12 col-sm-6">
+                <p class="text-muted m-b-1">Descripción del archivo (3.3 Mb) </p>
+                <a class="btn btn-primary btn-sm"><i class="fa fa-download"></i>&nbsp; Descargar archivo</a>
+              </div>
+              <div class="col-xs-12 col-sm-6">
+                <p class="text-muted m-b-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. (3.3 Mb)</p>
+                <a class="btn btn-primary btn-sm"><i class="fa fa-download"></i>&nbsp; Descargar archivo</a>
+              </div>
+            </div>
+  
+  
+          </div>
+  
+        </div>
+  
+      </div>
+    </section>
+  </div>
+  

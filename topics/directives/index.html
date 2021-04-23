@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="CustomDirective">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="autocomplete-jquery-ui.js"></script>
+    
+    <script src="controller.js"></script>
+
+    <style>
+        .circular {
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: block;              
+        }
+
+        .no-list li {
+            list-style-type: none;
+        }
+
+    </style>
+
+  </head>
+
+  <body ng-controller="AppCtrl">
+        <!--
+        <ul class="no-list">
+            <li ng-repeat="repo in posts" ng-hide="main_repo && main_repo != repo.name">
+                <div class="circular" back-img="{{repo.owner.avatar_url}}"></div>
+
+                <h1>{{repo.full_name}}</h1>
+            </li>
+        </ul>
+        -->
+
+        <ul class="no-list">
+            <li ng-repeat="repo in posts" ng-hide="main_repo && main_repo != repo.name">
+                <div class="circular" back-img="{{repo.owner.avatar_url}}"></div>
+
+                <h1>{{repo.full_name}}</h1>
+            </li>
+        </ul>      
+
+    </body>
+
+</html>

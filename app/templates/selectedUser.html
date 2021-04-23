@@ -1,0 +1,31 @@
+<h4>Dashboard</h4>
+
+<div class="row">
+  <div class="col-sm-4">
+    <pre>$http = {{su.usershttpcode}} // {{su.usershttptext}}</pre>
+  </div>
+  <div class="col-sm-4">
+    <pre>Form = Valid: {{su.formvalid}}</pre>
+  </div>              
+  <div class="col-sm-4">
+    <pre>Submitted = {{su.submitted}}</pre>
+  </div>                                    
+</div>
+<div class="row">
+  <div class="col-sm-6">
+    <pre>User = {{su.usr | json}}</pre>
+  </div>
+  <div class="col-sm-6">
+    <pre>selected = {{su.selected | json}}</pre>
+  </div>              
+</div>
+
+<div class="row">
+  <div class="col-sm-4">
+    <button class="btn btn-danger btn-md" ng-click="su.disabledUsr()">Disable User</button>
+  </div>
+</div>
+<hr>
+
+
+

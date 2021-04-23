@@ -1,0 +1,46 @@
+<!doctype html>
+<html ng-app="codeAngularJSApp">
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i" rel="stylesheet">
+
+    <!-- CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"  rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/argob-poncho@0.3.4/dist/css/poncho.min.css" rel="stylesheet">
+  
+    <!-- Angular -->
+    <!--
+    <script src="https://code.angularjs.org/1.5.0/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.5.0/angular-route.min.js"></script>
+    -->
+    <!-- Angular 1.5.0 -->
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
+    
+    <script src="app.js"></script>
+    <script src="app.config.js"></script>
+
+    <!-- Services & Factories -->
+    <script src="factories/userFactory.js"></script>
+
+    <!-- Controllers -->
+    <script src="controllers/aboutUsController.js"></script>
+    <script src="controllers/indexController.js"></script>
+    <script src="controllers/notFoundController.js"></script>
+    <script src="controllers/registerController.js"></script>
+    <script src="controllers/selectedUserController.js"></script>
+    <script src="controllers/usersController.js"></script>
+
+</head>
+<body>
+
+    <ng-include src="'templates/header.html'"></ng-include>
+
+    <div>
+		<ng-view></ng-view>
+	</div>
+
+    <ng-include src="'templates/footer.html'"></ng-include>
+
+</body>
+</html>
